@@ -1,12 +1,16 @@
 import React from "react";
 import Column from "../components/Layout/Column";
+import {withTheme} from "@emotion/react";
+import {Typography} from "@mui/material";
 
-export const HomePage = () => {
+const HomePage = () => {
 
     return (
         <Column width='100vw'>
-            Content
+            <Typography variant='h1'>Content</Typography>
         </Column>
     )
 
 }
+
+export default withTheme(HomePage);
