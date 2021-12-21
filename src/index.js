@@ -7,14 +7,26 @@ import store from "./store/store";
 import {BrowserRouter} from "react-router-dom";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./theme";
+import {SnackbarProvider} from "notistack";
+import Slide from "@mui/material/Slide";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <React.StrictMode>
-                    <App/>
-                </React.StrictMode>
+                <SnackbarProvider
+                    maxSnack={3}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                    }}
+                    autoHideDuration={3000}
+                    TransitionComponent={Slide}
+                >
+                    <React.StrictMode>
+                        <App/>
+                    </React.StrictMode>
+                </SnackbarProvider>
             </ThemeProvider>
         </BrowserRouter>
     </Provider>,
