@@ -9,24 +9,27 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from "./theme";
 import {SnackbarProvider} from "notistack";
 import Slide from "@mui/material/Slide";
+import ScreenSizeProvider from "./services/ScreenSizeProvider";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <ThemeProvider theme={theme}>
-                <SnackbarProvider
-                    maxSnack={3}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    autoHideDuration={3000}
-                    TransitionComponent={Slide}
-                >
-                    <React.StrictMode>
-                        <App/>
-                    </React.StrictMode>
-                </SnackbarProvider>
+                <ScreenSizeProvider>
+                    <SnackbarProvider
+                        maxSnack={3}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        autoHideDuration={3000}
+                        TransitionComponent={Slide}
+                    >
+                        <React.StrictMode>
+                            <App/>
+                        </React.StrictMode>
+                    </SnackbarProvider>
+                </ScreenSizeProvider>
             </ThemeProvider>
         </BrowserRouter>
     </Provider>,
